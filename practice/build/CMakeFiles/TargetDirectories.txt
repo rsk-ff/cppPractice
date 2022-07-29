@@ -1,3 +1,0 @@
-/home/fanq/practice/build/CMakeFiles/rebuild_cache.dir
-/home/fanq/practice/build/CMakeFiles/edit_cache.dir
-/home/fanq/practice/build/CMakeFiles/move.dir
