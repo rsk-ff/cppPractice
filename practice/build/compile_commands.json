@@ -1,0 +1,13 @@
+[
+{
+  "directory": "/home/fanq/practice/build",
+  "command": "/usr/bin/g++   -I../include  -g   -o CMakeFiles/move.dir/src/main.cpp.o -c /home/fanq/practice/src/main.cpp",
+  "file": "/home/fanq/practice/src/main.cpp"
+},
+
+{
+  "directory": "/home/fanq/practice/build",
+  "command": "/usr/bin/g++   -I../include  -g   -o CMakeFiles/move.dir/src/move.cpp.o -c /home/fanq/practice/src/move.cpp",
+  "file": "/home/fanq/practice/src/move.cpp"
+}
+]
