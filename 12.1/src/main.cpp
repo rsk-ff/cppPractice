@@ -2,8 +2,8 @@
 
 int main()
 {
-    Cow myfCow;
-    myfCow.ShowCow();
+    //Cow myfCow;
+    //myfCow.ShowCow();
 
     Cow mysCow("fjdas", "fasd", 79);
     mysCow.ShowCow();
@@ -11,7 +11,7 @@ int main()
     Cow mytCow(mysCow);
     mytCow.ShowCow();
 
-    Cow myfoCow = myfCow;
-    myfCow.ShowCow();
+    Cow myfoCow = mysCow;
+    myfoCow.ShowCow();
     return 0;
 }
