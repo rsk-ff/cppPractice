@@ -3,15 +3,15 @@
 class Cd
 {
 private:
-    char performers[50];
-    char label[20];
+    char * performers;
+    char * label;
     int selections;
     double playtime;
 public:
-    Cd(const char * s1, const char * s2, int n, double x);
+    Cd(const char * s1 = "null", const char * s2 = "null", int n = 0, double x = 0);
     Cd(const Cd & d);
-    Cd(){};
-    virtual ~Cd(){};
+    //Cd(){};
+    virtual ~Cd();
     virtual void Report() const;
     virtual Cd & operator=(const Cd & d);
 };
@@ -19,12 +19,12 @@ public:
 class Classic: public Cd
 {
 private:
-    char works1[50];
-    char works2[50];
+    char * works1;
+    char * works2;
 public:
-    Classic(){};
-    Classic(const char * s1, const char * s2, const char * s3, const char * s4, int n, double x);
-    ~Classic(){};
+    //Classic(){};
+    Classic(const char * s1 = "null", const char * s2 = "null", const char * s3 = "null", const char * s4 = "null", int n = 0, double x = 0);
+    ~Classic();
     void Report() const;
     Classic & operator=(const Classic & c);
 };
