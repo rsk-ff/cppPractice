@@ -38,21 +38,45 @@ int main(int argc, char **argv)
     Matrix<float, 2, 1> result2 = matrix_23 * vd_3d;
     // cout << result2 << endl << result2.transpose();
 
+    cout << matrix_23 << endl;
+    cout << matrix_23.reverse() << endl;
+
 
     matrix_33 = Matrix3d::Random();
-    cout << matrix_33 << endl;
-    cout << matrix_33.sum() << endl;
+    // cout << matrix_33 << endl;
+    // cout << matrix_33.sum() << endl;
 
-    cout << matrix_33.trace() << endl;//矩阵的迹
-    cout << matrix_33.inverse() << endl << matrix_33.reverse() * matrix_33 << endl;
-    cout << matrix_33.determinant();
+    // cout << matrix_33.trace() << endl;//矩阵的迹
+    // cout << matrix_33.inverse() << endl << matrix_33.inverse() * matrix_33 << endl;
+    // cout << matrix_33.determinant() << endl;
 
     SelfAdjointEigenSolver<Matrix3d> eigen_sover(matrix_33.transpose() * matrix_33);
-    cout << eigen_sover.eigenvalues() << endl;
-    cout << eigen_sover.eigenvectors() << endl;
+    // cout << eigen_sover.eigenvalues() << endl;
+    // cout << eigen_sover.eigenvectors() << endl;
 
     Matrix<double, MATRIX_SIZE, MATRIX_SIZE> matrix_NN = MatrixXd::Random(MATRIX_SIZE, MATRIX_SIZE);
+    matrix_NN = matrix_NN * matrix_NN.transpose();
+    Matrix<double, MATRIX_SIZE, 1> v_Nd = MatrixXd::Random(MATRIX_SIZE, 1);
+
+    clock_t time_stt = clock();
+
+    // 直接求逆
+    Matrix<double, MATRIX_SIZE, 1> x = matrix_NN.inverse() * v_Nd;
+    cout << 1000 * (clock() - time_stt) / (double) CLOCKS_PER_SEC << "ms" << endl;
+    // cout << x.transpose() << endl;
+    
+    //QR分解
+    time_stt = clock();
+    x = matrix_NN.colPivHouseholderQr().solve(v_Nd);
+    cout << 1000 * (clock() - time_stt) / (double) CLOCKS_PER_SEC << "ms" << endl;
+    // cout << x.transpose() << endl;
+
+    //cholesky分解
+    time_stt = clock();
+    x = matrix_NN.ldlt().solve(v_Nd);
+    cout << 1000 * (clock() - time_stt) / (double) CLOCKS_PER_SEC << "ms" << endl;
+    // cout << x.transpose() <<endl;
 
 
-
+    return 0;
 }
